@@ -46,7 +46,6 @@ export async function askGemini(prompt: string): Promise<string> {
   }
 }
 
-// Specific helper: Get crop disease symptoms and remedies
 // Enhanced Gemini action with better prompting
 export async function getCropRemedies(diseaseName: string): Promise<string> {
   try {
@@ -95,5 +94,47 @@ Please provide detailed, actionable advice that farmers can implement immediatel
   } catch (error) {
     console.error("Error in getCropRemedies:", error);
     return "❌ Failed to get crop remedies. Please check the disease name and try again.";
+  }
+}
+
+// 👇 New function to analyze fertilizer
+export async function getFertilizerInsights(
+  fertilizerName: any,
+): Promise<string> {
+  try {
+    const name = String(fertilizerName).trim(); // Ensure it's a string
+
+    if (!name) {
+      throw new Error("Fertilizer name cannot be empty");
+    }
+
+    const prompt = `You are an expert agricultural assistant. Provide an in-depth analysis of the fertilizer: **"${name}"**.
+
+Respond strictly in the following format and include the appropriate emojis for clarity:
+
+**🌟 PROS**
+- [List top advantages of using this fertilizer]
+
+**⚠️ CONS**
+- [List possible disadvantages or risks]
+
+**💰 PRICE ESTIMATE**
+- Typical market price in India (INR per kg or per litre)
+
+**⚖️ RECOMMENDED USAGE**
+- Suggested application rate (e.g., kg per acre)
+- Best time/method to apply
+
+**🧠 EXPERT TIPS**
+- Safety precautions
+- Storage tips
+- Compatibility with other fertilizers/pesticides
+
+Keep the format exactly as shown with the emojis and markdown styling. Be concise but informative.`;
+
+    return await askGemini(prompt);
+  } catch (error) {
+    console.error("Error in getFertilizerInsights:", error);
+    return "❌ Failed to fetch fertilizer analysis. Please try again.";
   }
 }
