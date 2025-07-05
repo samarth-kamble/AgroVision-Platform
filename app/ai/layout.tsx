@@ -23,6 +23,7 @@ import {
   ChevronDown,
   Bot,
   Trees,
+  Flower2,
 } from "lucide-react";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
@@ -46,6 +47,11 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       name: "Dashboard",
       href: "/ai",
       icon: LayoutDashboard,
+    },
+    {
+      name: "Crop Recommendation",
+      href: "/ai/crop-recomentation",
+      icon: Flower2,
     },
     {
       name: "Plant Disease Detection",
