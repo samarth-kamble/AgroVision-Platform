@@ -1,7 +1,7 @@
 import React from "react";
 
-const page = () => {
-  return <div></div>;
+const AnimalDisease = () = {
+  return <div>Animal Disease</div>;
 };
 
-export default page;
+export default AnimalDisease;
