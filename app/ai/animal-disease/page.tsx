@@ -1,6 +1,6 @@
 import React from "react";
 
-const AnimalDisease = () = {
+const AnimalDisease = () => {
   return <div>Animal Disease</div>;
 };
 
