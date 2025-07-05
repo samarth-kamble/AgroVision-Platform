@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   description: "AgroVision - Your Agricultural Companion",
 };
 
+/**
+ * Root layout component that provides global context, font styling, and notification support for the application.
+ *
+ * Wraps all pages with session management, applies the Nunito font, and includes a toast notification system.
+ *
+ * @param children - The content to be rendered within the layout
+ */
 export default async function RootLayout({
   children,
 }: Readonly<{
