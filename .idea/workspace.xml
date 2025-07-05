@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d19ae34e-b193-49ae-88c3-58f5ed851710" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/actions/predict-crop-disease.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/predict-crop-disease.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai/crop-recomentation/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/crop-recomentation/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,16 +19,49 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "assignee": "samarth-kamble"
+      &quot;assignee&quot;: &quot;samarth-kamble&quot;
     }
   ],
-  "lastFilter": {
-    "assignee": "samarth-kamble"
+  &quot;lastFilter&quot;: {
+    &quot;assignee&quot;: &quot;samarth-kamble&quot;
   }
-}]]></component>
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="dev" />
+                    <option name="lastUsedInstant" value="1751725074" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1751724643" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/crop-recommendation" />
+                    <option name="lastUsedInstant" value="1751724063" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="ai-model" />
+                    <option name="lastUsedInstant" value="1751708406" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/samarth-kamble/AgroVision-Platform.git&quot;,
@@ -47,7 +84,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "#11 on dev",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/samarthkamble/Developer/Project/agrovision",
@@ -56,8 +93,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "bun",
+    "prettierjs.PrettierConfiguration.Package": "/Users/samarthkamble/Developer/Project/agrovision/node_modules/prettier",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/Users/samarthkamble/Developer/Project/agrovision/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -94,6 +132,8 @@
       <workItem from="1751696320556" duration="355000" />
       <workItem from="1751696688571" duration="716000" />
       <workItem from="1751697420335" duration="8892000" />
+      <workItem from="1751707228116" duration="6711000" />
+      <workItem from="1751724876043" duration="632000" />
     </task>
     <servers />
   </component>

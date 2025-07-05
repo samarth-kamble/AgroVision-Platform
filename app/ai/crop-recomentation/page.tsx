@@ -218,10 +218,9 @@ export default function CropRecommender() {
                 Recommended Crop
               </h3>
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                <div
-                  className="prose prose-invert max-w-none text-green-200"
-                  dangerouslySetInnerHTML={{ __html: result }}
-                />
+                <div className="prose prose-invert max-w-none text-green-200">
+                                   {result}
+                  </div>
               </div>
             </div>
           )}

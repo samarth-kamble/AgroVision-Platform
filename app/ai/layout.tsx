@@ -50,7 +50,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     },
     {
       name: "Crop Recommendation",
-      href: "/ai/crop-recomentation",
+      href: "/ai/crop-recommendation",
       icon: Flower2,
     },
     {
@@ -106,7 +106,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             ? "fixed inset-y-0 left-0 translate-x-0"
             : "fixed inset-y-0 left-0 -translate-x-full"
         }
-        lg:relative lg:translate-x-0 lg:h-screen lg:sticky lg:top-0`}
+       lg:translate-x-0 lg:h-screen lg:sticky lg:top-0`}
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
