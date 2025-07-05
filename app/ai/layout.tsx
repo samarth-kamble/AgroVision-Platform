@@ -100,11 +100,11 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             ? "fixed inset-y-0 left-0 translate-x-0"
             : "fixed inset-y-0 left-0 -translate-x-full"
         }
-        lg:static lg:translate-x-0`}
+        lg:relative lg:translate-x-0 lg:h-screen lg:sticky lg:top-0`}
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="flex items-center gap-4 p-6 border-b border-white/20">
+          <div className="flex items-center gap-4 p-6 border-b border-white/20 flex-shrink-0">
             <div className="relative">
               <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-xl">
                 <span className="text-xl">🌾</span>
@@ -159,9 +159,9 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col relative z-10">
+      <div className="flex-1 flex flex-col relative z-10 min-h-screen">
         {/* Header */}
-        <header className="bg-white/10 backdrop-blur-xl border-b border-white/20 sticky top-0 z-40">
+        <header className="bg-white/10 backdrop-blur-xl border-b border-white/20 sticky top-0 z-40 flex-shrink-0">
           <div className="flex items-center justify-between px-6 py-4">
             {/* Sidebar Toggle & Search */}
             <div className="flex items-center gap-4">
@@ -250,7 +250,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         </header>
 
         {/* Main Page Content */}
-        <main className="p-6">{children}</main>
+        <main className="flex-1 p-6 overflow-y-auto">{children}</main>
       </div>
 
       {/* Sidebar Overlay (Mobile) */}
