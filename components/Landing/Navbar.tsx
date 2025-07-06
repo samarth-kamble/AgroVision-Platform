@@ -4,6 +4,9 @@ import { Menu, X, UserPlus, LogIn, ChevronDown } from "lucide-react";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { UserButton } from "../auth/UserButton";
 
+import Logo from "@/public/Logo.png";
+import Image from "next/image";
+
 const Navbar = () => {
   const user = useCurrentUser();
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +19,10 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-lg">🌾</span>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-lg">
+                  <Image src={Logo} alt="AgroVision Logo" />
+                </span>
               </div>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-lime-400 rounded-full animate-ping"></div>
             </div>
@@ -165,22 +170,26 @@ const Navbar = () => {
               >
                 Contact
               </a>
-              <div className="pt-4 border-t border-white/20 space-y-2">
-                <a
-                  href="/auth/login"
-                  className="flex items-center gap-2 px-3 py-2 text-green-300 hover:text-white font-semibold transition-all duration-300 hover:bg-white/10 rounded-lg border border-green-400/50"
-                >
-                  <LogIn className="w-4 h-4" />
-                  Login
-                </a>
-                <a
-                  href="/auth/register"
-                  className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-lg shadow-lg"
-                >
-                  <UserPlus className="w-4 h-4" />
-                  Sign Up
-                </a>
-              </div>
+              {user ? (
+                <UserButton />
+              ) : (
+                <div className="pt-4 border-t border-white/20 space-y-2">
+                  <a
+                    href="/auth/login"
+                    className="flex items-center gap-2 px-3 py-2 text-green-300 hover:text-white font-semibold transition-all duration-300 hover:bg-white/10 rounded-lg border border-green-400/50"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    Login
+                  </a>
+                  <a
+                    href="/auth/register"
+                    className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-lg shadow-lg"
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    Sign Up
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         )}
