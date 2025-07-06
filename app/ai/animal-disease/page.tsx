@@ -21,6 +21,7 @@ import {
   Activity,
   Thermometer,
   AlertTriangle,
+  Panda,
 } from "lucide-react";
 
 interface CattleDisease {
@@ -216,7 +217,7 @@ const CattleAnalysisForm = () => {
           <div className="relative inline-flex items-center justify-center mb-6">
             <div className="w-20 h-20 bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600 rounded-2xl flex items-center justify-center shadow-2xl backdrop-blur-sm border border-white/20 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-              <Heart className="w-10 h-10 text-white relative z-10" />
+              <Panda className="w-10 h-10 text-white relative z-10" />
               <div className="absolute -top-2 -right-2 w-6 h-6 bg-lime-400 rounded-full animate-ping" />
             </div>
             <Sparkles className="absolute -top-2 -left-2 w-6 h-6 text-yellow-400 animate-pulse" />
@@ -644,7 +645,7 @@ const CattleAnalysisForm = () => {
                                       {recommendation}
                                     </span>
                                   </li>
-                                )
+                                ),
                               )}
                             </ul>
                           </div>
