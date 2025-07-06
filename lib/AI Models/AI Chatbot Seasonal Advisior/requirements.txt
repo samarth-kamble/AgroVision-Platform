@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+langchain-google-genai
+faiss-cpu
+chromadb
+unstructured
+pypdf
+tiktoken
+python-dotenv
+streamlit
+langchain
+datetime
+langchain_community
