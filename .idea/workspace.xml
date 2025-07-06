@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d19ae34e-b193-49ae-88c3-58f5ed851710" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/actions/fertilizer-predict.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai/fertilizer/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/gemini.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/gemini.ts" afterDir="false" />
-    </list>
+    <list default="true" id="d19ae34e-b193-49ae-88c3-58f5ed851710" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,12 +32,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="dev" />
-                    <option name="lastUsedInstant" value="1751725074" />
+                    <option name="branchName" value="05-feature/animal-disease" />
+                    <option name="lastUsedInstant" value="1751786027" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1751724643" />
+                    <option name="lastUsedInstant" value="1751777054" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="dev" />
+                    <option name="lastUsedInstant" value="1751725074" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/crop-recommendation" />
@@ -84,7 +82,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "05-feature/animal-disease",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/samarthkamble/Developer/Project/agrovision",
