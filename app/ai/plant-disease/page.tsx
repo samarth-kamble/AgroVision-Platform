@@ -383,8 +383,8 @@ const CropDiseaseDetection = () => {
                     dragActive
                       ? "border-green-400 bg-green-500/10 scale-[1.02]"
                       : selectedFile
-                      ? "border-green-400/60 bg-green-500/5"
-                      : "border-white/30 hover:border-green-400/50 hover:bg-white/5"
+                        ? "border-green-400/60 bg-green-500/5"
+                        : "border-white/30 hover:border-green-400/50 hover:bg-white/5"
                   }`}
                   onDragEnter={handleDrag}
                   onDragLeave={handleDrag}

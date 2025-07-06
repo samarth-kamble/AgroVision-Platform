@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d19ae34e-b193-49ae-88c3-58f5ed851710" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/actions/fertilizer-predict.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai/fertilizer/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actions/animal-disease.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/gemini.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/gemini.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai/animal-disease/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/animal-disease/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +36,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="dev" />
-                    <option name="lastUsedInstant" value="1751725074" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1751777054" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1751724643" />
+                    <option name="branchName" value="dev" />
+                    <option name="lastUsedInstant" value="1751725074" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/crop-recommendation" />
