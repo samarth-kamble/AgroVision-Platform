@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d19ae34e-b193-49ae-88c3-58f5ed851710" name="Changes" comment="" />
+    <list default="true" id="d19ae34e-b193-49ae-88c3-58f5ed851710" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/actions/chatbot.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/ai/chatbot/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai/animal-disease/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/animal-disease/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,12 +40,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="05-feature/animal-disease" />
-                    <option name="lastUsedInstant" value="1751786027" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1751796914" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1751777054" />
+                    <option name="branchName" value="05-feature/animal-disease" />
+                    <option name="lastUsedInstant" value="1751786027" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="dev" />
@@ -82,7 +90,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "05-feature/animal-disease",
+    "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/samarthkamble/Developer/Project/agrovision",

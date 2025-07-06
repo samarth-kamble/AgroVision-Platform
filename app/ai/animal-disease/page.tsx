@@ -24,6 +24,8 @@ import {
   Panda,
 } from "lucide-react";
 
+import { analyzeCattleDisease } from "@/actions/animal-disease";
+
 interface CattleDisease {
   name: string;
   symptoms: string[];
@@ -94,51 +96,15 @@ const CattleAnalysisForm = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      // Mock response - replace with actual API call
-      const mockResponse: AnalysisResult = {
-        is_cattle: true,
-        cattle_diseases: [
-          {
-            name: "Bovine Respiratory Disease",
-            symptoms: [
-              "Coughing",
-              "Nasal discharge",
-              "Fever",
-              "Difficulty breathing",
-            ],
-            possible_causes: [
-              "Viral infection",
-              "Bacterial infection",
-              "Stress",
-              "Poor ventilation",
-            ],
-            severity: "Moderate",
-            description:
-              "A common respiratory condition affecting cattle, often caused by stress and environmental factors.",
-          },
-        ],
-        remedies: [
-          {
-            disease: "Bovine Respiratory Disease",
-            treatment:
-              "Administer antibiotics and anti-inflammatory medications. Ensure proper ventilation and reduce stress factors.",
-            prevention:
-              "Maintain proper ventilation, reduce overcrowding, provide balanced nutrition, and implement vaccination programs.",
-            dosage: "Oxytetracycline 10mg/kg body weight, twice daily",
-            duration: "7-10 days",
-            urgency: "Medium",
-          },
-        ],
-        confidence_level: "High",
-        recommendations: [
-          "Consult with a veterinarian for proper diagnosis",
-          "Isolate affected animals to prevent spread",
-          "Monitor body temperature regularly",
-          "Ensure adequate nutrition and hydration",
-        ],
-      };
+      const formData = new FormData();
+      formData.append("image", selectedFile);
+      const response = await analyzeCattleDisease(formData);
 
-      setResult(mockResponse);
+      if ("error" in response) {
+        setError(response.error || "Analysis failed. Please try again.");
+      } else {
+        setResult(response);
+      }
     } catch {
       setError("Analysis failed. Please try again.");
     } finally {
@@ -645,7 +611,7 @@ const CattleAnalysisForm = () => {
                                       {recommendation}
                                     </span>
                                   </li>
-                                ),
+                                )
                               )}
                             </ul>
                           </div>
