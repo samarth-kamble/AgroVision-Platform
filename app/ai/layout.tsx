@@ -27,7 +27,9 @@ import {
   Panda,
 } from "lucide-react";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import Image from "next/image";
 
+import Logo from "@/public/Logo.png";
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
@@ -118,8 +120,10 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           {/* Logo */}
           <div className="flex items-center gap-4 p-6 border-b border-white/20 flex-shrink-0">
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-xl">
-                <span className="text-xl">🌾</span>
+              <div className="w-12 h-12 flex items-center justify-center shadow-xl">
+                <span className="text-xl">
+                  <Image src={Logo} alt="Logo" />
+                </span>
               </div>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-lime-400 rounded-full animate-ping" />
             </div>
