@@ -25,6 +25,7 @@ import {
   Trees,
   Flower2,
   Panda,
+  Headset,
 } from "lucide-react";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import Image from "next/image";
@@ -75,6 +76,11 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       name: "Farming Chatbot",
       href: "/ai/chatbot",
       icon: Bot,
+    },
+    {
+      name: "Seasonal Adviser",
+      href: "/ai/seasonal-advice",
+      icon: Headset,
     },
     {
       name: "Weather & Market",
