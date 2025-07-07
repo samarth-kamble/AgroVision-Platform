@@ -13,6 +13,8 @@ import {
   Heart,
   ExternalLink,
 } from "lucide-react";
+import Image from "next/image";
+import Logo from "@/public/Logo.png"; // Adjust the path as necessary
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,11 +23,10 @@ const Footer = () => {
     {
       title: "Platform",
       links: [
-        { name: "Dashboard", href: "#" },
+        { name: "AI Dashboard", href: "/ai" },
         { name: "Analytics", href: "#" },
         { name: "Market Insights", href: "#" },
         { name: "Weather Station", href: "#" },
-        { name: "Mobile App", href: "#" },
       ],
     },
     {
@@ -51,11 +52,11 @@ const Footer = () => {
     {
       title: "Company",
       links: [
-        { name: "About Us", href: "#" },
+        { name: "About Us", href: "/about-us" },
         { name: "Careers", href: "#" },
         { name: "Press Kit", href: "#" },
         { name: "Partners", href: "#" },
-        { name: "Contact", href: "#" },
+        { name: "Contact", href: "/contact" },
       ],
     },
   ];
@@ -123,8 +124,10 @@ const Footer = () => {
               {/* Logo */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-xl">
-                    <span className="text-2xl">🌾</span>
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-xl">
+                    <span className="text-2xl">
+                      <Image src={Logo} alt="AgroVision Logo" />
+                    </span>
                   </div>
                   <div className="absolute -top-1 -right-1 w-4 h-4 bg-lime-400 rounded-full animate-ping"></div>
                 </div>
@@ -211,7 +214,7 @@ const Footer = () => {
 
               <div className="flex items-center gap-6 text-sm">
                 <a
-                  href="#"
+                  href="/privacy-policy"
                   className="text-gray-300 hover:text-green-400 transition-colors"
                 >
                   Privacy Policy

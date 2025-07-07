@@ -12,6 +12,13 @@ enum UserRole {
   ADMIN
 }
 
+enum ContactStatus {
+  PENDING
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -79,4 +86,17 @@ model TwoFactorConfirmation {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
+}
+
+model ContactMessage {
+  id         String        @id @default(cuid())
+  name       String
+  email      String
+  phone      String?
+  subject    String
+  message    String        @db.Text
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  status     ContactStatus @default(PENDING)
+  adminNotes String?       @db.Text
 }

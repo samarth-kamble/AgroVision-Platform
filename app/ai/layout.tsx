@@ -39,7 +39,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const user = useCurrentUser();
 
   if (!user) {
-    redirect("/login");
+    redirect("/auth/login");
   }
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -244,7 +244,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                     </div>
                     <div className="py-2">
                       <Link
-                        href="/dashboard/profile"
+                        href="/profile"
                         className="flex items-center gap-3 px-4 py-2 text-green-200 hover:text-white hover:bg-white/10 transition-colors"
                       >
                         <User className="w-4 h-4" />
