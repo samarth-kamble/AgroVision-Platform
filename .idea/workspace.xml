@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d19ae34e-b193-49ae-88c3-58f5ed851710" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/actions/seasonal-adviser.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actions/contact-us.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(main)/about-us/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(main)/contact/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(main)/privacy-policy/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(profile)/profile/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/ai/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Landing/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Landing/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Landing/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Landing/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/auth/UserButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/UserButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/schema/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +96,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/samarthkamble/Developer/Project/agrovision",
@@ -97,7 +106,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "bun",
     "prettierjs.PrettierConfiguration.Package": "/Users/samarthkamble/Developer/Project/agrovision/node_modules/prettier",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/samarthkamble/Developer/Project/agrovision/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -135,10 +144,24 @@
       <workItem from="1751696320556" duration="355000" />
       <workItem from="1751696688571" duration="716000" />
       <workItem from="1751697420335" duration="8892000" />
+      <workItem from="1751816379306" duration="2948000" />
+      <workItem from="1751857749133" duration="14548000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/schema/index.ts</url>
+          <line>60</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

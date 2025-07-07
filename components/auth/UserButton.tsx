@@ -22,6 +22,7 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { LogoutButton } from "./LogoutButton";
+import Link from "next/link";
 
 export const UserButton = () => {
   const user = useCurrentUser();
@@ -142,11 +143,13 @@ export const UserButton = () => {
         {/* Menu items */}
         <div className="py-2">
           <DropdownMenuItem className="group px-4 py-3 cursor-pointer transition-all duration-200 hover:bg-white/10 rounded-xl m-1 focus:bg-white/10">
-            <User className="mr-3 h-5 w-5 text-green-400 transition-transform duration-200 group-hover:scale-110" />
-            <div>
-              <span className="font-medium text-white">Profile Settings</span>
-              <p className="text-xs text-green-200">Manage your account</p>
-            </div>
+            <Link href={"/profile"} className="flex items-center">
+              <User className="mr-3 h-5 w-5 text-green-400 transition-transform duration-200 group-hover:scale-110" />
+              <div>
+                <span className="font-medium text-white">Profile Settings</span>
+                <p className="text-xs text-green-200">Manage your account</p>
+              </div>
+            </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem className="group px-4 py-3 cursor-pointer transition-all duration-200 hover:bg-white/10 rounded-xl m-1 focus:bg-white/10">
@@ -158,11 +161,13 @@ export const UserButton = () => {
           </DropdownMenuItem>
 
           <DropdownMenuItem className="group px-4 py-3 cursor-pointer transition-all duration-200 hover:bg-white/10 rounded-xl m-1 focus:bg-white/10">
-            <Settings className="mr-3 h-5 w-5 text-gray-400 transition-transform duration-200 group-hover:scale-110" />
-            <div>
-              <span className="font-medium text-white">Dashboard Settings</span>
-              <p className="text-xs text-green-200">Customize your view</p>
-            </div>
+            <Link href="/ai" className="flex items-center">
+              <Settings className="mr-3 h-5 w-5 text-gray-400 transition-transform duration-200 group-hover:scale-110" />
+              <div>
+                <span className="font-medium text-white">AI Dashboard</span>
+                <p className="text-xs text-green-200">Ai Feature Analysis</p>
+              </div>
+            </Link>
           </DropdownMenuItem>
         </div>
 
