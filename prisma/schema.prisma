@@ -19,6 +19,12 @@ enum ContactStatus {
   CLOSED
 }
 
+enum NotificationType {
+  LIKE
+  COMMENT
+  FOLLOW
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -27,7 +33,16 @@ model User {
   image         String?
   password      String?
   role          UserRole  @default(USER)
-  accounts      Account[]
+
+  post                 Post[]
+  comments             Comment[]
+  likes                Like[]
+  followers            Follows[]      @relation("following")
+  following            Follows[]      @relation("follower")
+  notifications        Notification[] @relation("userNotifications") // notifications received by a user
+  notificationsCreated Notification[] @relation("notificationCreator") // notifications triggered by a user
+
+  accounts Account[]
 
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
@@ -99,4 +114,74 @@ model ContactMessage {
   updatedAt  DateTime      @updatedAt
   status     ContactStatus @default(PENDING)
   adminNotes String?       @db.Text
+}
+
+model Post {
+  id            String         @id @default(cuid())
+  authorId      String
+  content       String?
+  image         String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  author        User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments      Comment[]
+  likes         Like[]
+  notifications Notification[]
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  authorId  String
+  postId    String
+  createdAt DateTime @default(now())
+
+  author       User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  post         Post           @relation(fields: [postId], references: [id], onDelete: Cascade)
+  Notification Notification[]
+
+  @@index([authorId, postId])
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  postId    String
+  userId    String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId])
+  @@index([userId, postId])
+}
+
+model Follows {
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  follwing User @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@id([followerId, followingId])
+  @@index([followerId, followingId])
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  creatorId String
+  type      NotificationType
+  read      Boolean          @default(false)
+  postId    String?
+  commentId String?
+  createdAt DateTime         @default(now())
+
+  user    User     @relation("userNotifications", fields: [userId], references: [id], onDelete: Cascade)
+  creator User     @relation("notificationCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  post    Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  comment Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
 }
