@@ -42,10 +42,10 @@ const Navbar = () => {
               Home
             </Link>
             <a
-              href="#features"
+              href="/community"
               className="text-white hover:text-green-300 font-medium transition-colors"
             >
-              Features
+              Community
             </a>
             <div className="relative">
               <button
