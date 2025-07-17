@@ -1,15 +1,13 @@
 "use client";
+import CreatePost from "@/components/community/CreatePost";
 import {
-  Image,
   User,
-  Send,
   Heart,
   MessageCircle,
   Share2,
   MoreHorizontal,
   BookmarkPlus,
-  Video,
-  FileText,
+  ImageIcon,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -26,53 +24,6 @@ interface Post {
 interface PostCardProps {
   post: Post;
 }
-
-const CreatePost: React.FC = () => {
-  const [postContent, setPostContent] = useState<string>("");
-
-  return (
-    <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 sm:p-6 border border-white/20 mb-6">
-      <div className="flex items-start gap-3 sm:gap-4 mb-4">
-        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-          <User className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-        </div>
-        <div className="flex-1">
-          <textarea
-            value={postContent}
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-              setPostContent(e.target.value)
-            }
-            placeholder="Share your farming experience, tips, or questions..."
-            className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 resize-none focus:outline-none focus:border-green-400 text-sm sm:text-base"
-            rows={3}
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto overflow-x-auto">
-          <button className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors whitespace-nowrap">
-            <Image className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
-            <span className="text-xs sm:text-sm text-white">Photo</span>
-          </button>
-          <button className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors whitespace-nowrap">
-            <Video className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-            <span className="text-xs sm:text-sm text-white">Video</span>
-          </button>
-          <button className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors whitespace-nowrap">
-            <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
-            <span className="text-xs sm:text-sm text-white">Document</span>
-          </button>
-        </div>
-
-        <button className="flex items-center gap-2 px-4 sm:px-6 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-300 w-full sm:w-auto justify-center">
-          <Send className="w-4 h-4" />
-          <span className="text-sm sm:text-base">Post</span>
-        </button>
-      </div>
-    </div>
-  );
-};
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const [liked, setLiked] = useState<boolean>(false);
@@ -106,7 +57,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       {post.image && (
         <div className="mb-4">
           <div className="w-full h-48 sm:h-64 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
-            <Image className="w-12 h-12 sm:w-16 sm:h-16 text-white/30" />
+            <ImageIcon className="w-12 h-12 sm:w-16 sm:h-16 text-white/30" />
           </div>
         </div>
       )}

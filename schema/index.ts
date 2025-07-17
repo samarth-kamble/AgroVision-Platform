@@ -55,7 +55,7 @@ export const SettingsSchema = z
     {
       message: "New password is required when changing password",
       path: ["newPassword"],
-    },
+    }
   )
   .refine(
     (data) => {
@@ -67,7 +67,7 @@ export const SettingsSchema = z
     {
       message: " Password is required when changing password",
       path: ["password"],
-    },
+    }
   );
 
 export const ContactFormSchema = z.object({
@@ -76,4 +76,12 @@ export const ContactFormSchema = z.object({
   phone: z.string().optional(),
   subject: z.string().min(1, "Subject is required"),
   message: z.string().min(1).max(1000, "Message is too long"),
+});
+
+export const createPostSchema = z.object({
+  content: z
+    .string()
+    .min(1, "Content is required")
+    .max(2000, "Content too long"),
+  image: z.string().url().optional(),
 });
