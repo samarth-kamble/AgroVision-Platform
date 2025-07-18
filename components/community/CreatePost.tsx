@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useState, useTransition, useRef } from "react";
-import {
-  User,
-  Video,
-  FileText,
-  Send,
-  ImageIcon,
-  X,
-  Loader2,
-} from "lucide-react";
+import { User, Send, ImageIcon, X, Loader2, Link } from "lucide-react";
 import { IKImage, ImageKitProvider, IKUpload } from "imagekitio-next";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
@@ -52,9 +44,14 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
   const [selectedImagePath, setSelectedImagePath] = useState<string | null>(
     null
   );
+  const [imageUrl, setImageUrl] = useState<string>("");
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [showImageUpload, setShowImageUpload] = useState(false);
+  const [showImageUrlInput, setShowImageUrlInput] = useState(false);
+  const [imageInputMethod, setImageInputMethod] = useState<"upload" | "url">(
+    "upload"
+  );
   const [isPending, startTransition] = useTransition();
   const { data: session } = useSession();
   const ikUploadRef = useRef(null);
@@ -99,9 +96,39 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
     return true;
   };
 
+  const isValidImageUrl = (url: string): boolean => {
+    try {
+      new URL(url);
+      return /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+    } catch {
+      return false;
+    }
+  };
+
+  const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const url = e.target.value;
+    setImageUrl(url);
+
+    if (url && isValidImageUrl(url)) {
+      setSelectedImage(url);
+      setSelectedImagePath(null); // Clear upload path when using URL
+    } else if (url) {
+      setSelectedImage(null);
+    }
+  };
+
   const removeImage = () => {
     setSelectedImage(null);
     setSelectedImagePath(null);
+    setImageUrl("");
+  };
+
+  const handleImageButtonClick = () => {
+    if (imageInputMethod === "upload") {
+      setShowImageUpload(true);
+    } else {
+      setShowImageUrlInput(true);
+    }
   };
 
   const handleSubmit = async () => {
@@ -112,6 +139,12 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
 
     if (!session?.user) {
       toast.error("Please log in to create a post");
+      return;
+    }
+
+    // Validate image URL if using URL method
+    if (imageUrl && !isValidImageUrl(imageUrl)) {
+      toast.error("Please enter a valid image URL");
       return;
     }
 
@@ -126,7 +159,9 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
           setPostContent("");
           setSelectedImage(null);
           setSelectedImagePath(null);
+          setImageUrl("");
           setShowImageUpload(false);
+          setShowImageUrlInput(false);
 
           if (onPostCreated) {
             onPostCreated();
@@ -191,15 +226,28 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
         </div>
 
         {/* Image Preview */}
-        {selectedImage && selectedImagePath && (
+        {selectedImage && (
           <div className="mb-4 relative">
-            <IKImage
-              path={selectedImagePath}
-              alt="Selected"
-              width={500}
-              height={300}
-              className="max-w-full h-auto rounded-lg border border-white/20 max-h-80 object-cover"
-            />
+            {selectedImagePath ? (
+              <IKImage
+                path={selectedImagePath}
+                alt="Selected"
+                width={500}
+                height={300}
+                className="max-w-full h-auto rounded-lg border border-white/20 max-h-80 object-cover"
+              />
+            ) : (
+              <img
+                src={selectedImage}
+                alt="Selected"
+                className="max-w-full h-auto rounded-lg border border-white/20 max-h-80 object-cover"
+                onError={() => {
+                  toast.error("Failed to load image");
+                  setSelectedImage(null);
+                  setImageUrl("");
+                }}
+              />
+            )}
             <button
               onClick={removeImage}
               disabled={isPending}
@@ -273,11 +321,83 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
           </div>
         )}
 
+        {/* Image URL Input Section */}
+        {showImageUrlInput && (
+          <div className="mb-4 p-4 bg-white/5 rounded-lg border border-white/20">
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="text-white text-sm font-medium">Image URL</h3>
+              <button
+                onClick={() => {
+                  setShowImageUrlInput(false);
+                  setImageUrl("");
+                  setSelectedImage(null);
+                }}
+                disabled={isPending}
+                className="text-white/70 hover:text-white disabled:opacity-50"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <input
+              type="url"
+              value={imageUrl}
+              onChange={handleImageUrlChange}
+              placeholder="Enter image URL (jpg, jpeg, png, gif, webp)..."
+              className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+              disabled={isPending}
+            />
+
+            {imageUrl && !isValidImageUrl(imageUrl) && (
+              <div className="mt-2 text-red-400 text-xs">
+                Please enter a valid image URL (jpg, jpeg, png, gif, webp)
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto overflow-x-auto">
+            {/* Image method selector */}
+            <div className="flex bg-white/10 rounded-lg overflow-hidden">
+              <button
+                onClick={() => {
+                  setImageInputMethod("upload");
+                  setShowImageUrlInput(false);
+                  setImageUrl("");
+                }}
+                disabled={isUploading || isPending}
+                className={`flex items-center gap-2 px-3 py-2 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed ${
+                  imageInputMethod === "upload"
+                    ? "bg-green-500 text-white"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                <ImageIcon className="w-4 h-4" />
+                <span className="text-xs">Upload</span>
+              </button>
+              <button
+                onClick={() => {
+                  setImageInputMethod("url");
+                  setShowImageUpload(false);
+                }}
+                disabled={isUploading || isPending}
+                className={`flex items-center gap-2 px-3 py-2 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed ${
+                  imageInputMethod === "url"
+                    ? "bg-green-500 text-white"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                <Link className="w-4 h-4" />
+                <span className="text-xs">URL</span>
+              </button>
+            </div>
+
             <button
-              onClick={() => setShowImageUpload(true)}
-              disabled={isUploading || showImageUpload || isPending}
+              onClick={handleImageButtonClick}
+              disabled={
+                isUploading || showImageUpload || showImageUrlInput || isPending
+              }
               className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isUploading ? (
@@ -289,18 +409,16 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated }) => {
                 {isUploading ? "Uploading..." : "Photo"}
               </span>
             </button>
-            <button className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors whitespace-nowrap opacity-50 cursor-not-allowed">
-              <Video className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-              <span className="text-xs sm:text-sm text-white">Video</span>
-            </button>
-            <button className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors whitespace-nowrap opacity-50 cursor-not-allowed">
-              <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
-              <span className="text-xs sm:text-sm text-white">Document</span>
-            </button>
           </div>
+
           <button
             onClick={handleSubmit}
-            disabled={!postContent.trim() || isPending || isUploading}
+            disabled={
+              !postContent.trim() ||
+              isPending ||
+              isUploading ||
+              (!!imageUrl && !isValidImageUrl(imageUrl))
+            }
             className="flex items-center gap-2 px-4 sm:px-6 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-300 w-full sm:w-auto justify-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isPending ? (

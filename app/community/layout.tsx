@@ -1,21 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Users,
   MessageCircle,
   TrendingUp,
-  Search,
-  Bell,
-  Sparkles,
-  LogIn,
-  Menu,
-  X,
   User,
-  Mail,
-  Lock,
-  Eye,
-  EyeOff,
   Sun,
   CloudRain,
   Thermometer,
@@ -25,10 +15,12 @@ import {
   LucideIcon,
   UserPlus,
   CheckCircle,
+  UserCheck,
 } from "lucide-react";
 import { FaSeedling } from "react-icons/fa";
+import LoginSidebar from "@/components/community/LoginSidebar";
+import Navbar from "@/components/community/Navbar";
 
-// Type definitions
 interface MenuItem {
   icon: LucideIcon;
   label: string;
@@ -36,19 +28,9 @@ interface MenuItem {
   href: string;
 }
 
-interface LoginSidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
 interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
-}
-
-interface NavbarProps {
-  onLoginClick: () => void;
-  onMobileMenuClick: () => void;
 }
 
 interface Follower {
@@ -61,101 +43,6 @@ interface Follower {
   category: string;
   isFollowing: boolean;
 }
-
-// Login Sidebar Component
-const LoginSidebar: React.FC<LoginSidebarProps> = ({ isOpen, onClose }) => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
-
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4">
-      <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/20 w-full max-w-md shadow-2xl">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">
-            {isLogin ? "Welcome Back" : "Join AgroVision"}
-          </h2>
-          <button
-            onClick={onClose}
-            className="text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        <div className="space-y-4">
-          {!isLogin && (
-            <div className="space-y-2">
-              <div className="text-sm font-medium text-green-300">
-                Full Name
-              </div>
-              <div className="relative">
-                <User className="absolute left-3 top-3 w-5 h-5 text-white/50" />
-                <input
-                  type="text"
-                  className="w-full pl-11 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-400/20 transition-all"
-                  placeholder="Enter your name"
-                />
-              </div>
-            </div>
-          )}
-
-          <div className="space-y-2">
-            <div className="text-sm font-medium text-green-300">Email</div>
-            <div className="relative">
-              <Mail className="absolute left-3 top-3 w-5 h-5 text-white/50" />
-              <input
-                type="email"
-                className="w-full pl-11 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-400/20 transition-all"
-                placeholder="Enter your email"
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <div className="text-sm font-medium text-green-300">Password</div>
-            <div className="relative">
-              <Lock className="absolute left-3 top-3 w-5 h-5 text-white/50" />
-              <input
-                type={showPassword ? "text" : "password"}
-                className="w-full pl-11 pr-11 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-400/20 transition-all"
-                placeholder="Enter your password"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-white/50 hover:text-white transition-colors"
-              >
-                {showPassword ? (
-                  <EyeOff className="w-5 h-5" />
-                ) : (
-                  <Eye className="w-5 h-5" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          <button className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-300 transform hover:scale-[1.02] shadow-lg">
-            {isLogin ? "Sign In" : "Create Account"}
-          </button>
-        </div>
-
-        <div className="mt-6 text-center">
-          <p className="text-white/70 text-sm">
-            {isLogin ? "Don't have an account?" : "Already have an account?"}
-          </p>
-          <button
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-green-400 hover:text-green-300 font-medium transition-colors"
-          >
-            {isLogin ? "Sign Up" : "Sign In"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 // Mobile Navigation Component
 const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
@@ -220,89 +107,6 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
         </div>
       </div>
     </div>
-  );
-};
-
-// Navbar Component
-const Navbar: React.FC<NavbarProps> = ({ onLoginClick, onMobileMenuClick }) => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "bg-black/20 backdrop-blur-2xl border-b border-white/10"
-          : "bg-white/10 backdrop-blur-xl border-b border-white/20"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={onMobileMenuClick}
-              className="lg:hidden text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-xl"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
-            <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
-              <Sparkles className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">
-              AgroVision
-            </span>
-          </div>
-
-          <div className="hidden md:flex items-center gap-8">
-            <a
-              href="/community"
-              className="text-green-400 font-medium relative"
-            >
-              Community
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-400"></span>
-            </a>
-            <a
-              href="/marketplace"
-              className="text-white/70 hover:text-white transition-colors relative group"
-            >
-              Marketplace
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a
-              href="/about"
-              className="text-white/70 hover:text-white transition-colors relative group"
-            >
-              About
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-4">
-            <button className="text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-xl">
-              <Search className="w-5 h-5" />
-            </button>
-            <button className="text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-xl relative">
-              <Bell className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
-            </button>
-            <button
-              onClick={onLoginClick}
-              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              <LogIn className="w-4 h-4" />
-              <span className="hidden sm:inline">Login</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
   );
 };
 
@@ -563,8 +367,8 @@ const Sidebar: React.FC = () => {
   const menuItems: MenuItem[] = [
     { icon: Users, label: "Community", active: true, href: "/community" },
     {
-      icon: MessageCircle,
-      label: "Messages",
+      icon: UserCheck,
+      label: "Subscriptions",
       active: false,
       href: "/messages",
     },
